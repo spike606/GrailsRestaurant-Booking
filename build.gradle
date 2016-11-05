@@ -49,7 +49,7 @@ dependencies {
     profile "org.grails.profiles:web"
     provided "org.codehaus.groovy:groovy-ant"
     runtime "com.bertramlabs.plugins:asset-pipeline-grails:2.11.1"
-    runtime "com.h2database:h2"
+    runtime "org.postgresql:postgresql:9.4.1212.jre7"
     testCompile "org.grails:grails-plugin-testing"
     testCompile "org.grails.plugins:geb"
     testRuntime "org.seleniumhq.selenium:selenium-htmlunit-driver:2.47.1"
