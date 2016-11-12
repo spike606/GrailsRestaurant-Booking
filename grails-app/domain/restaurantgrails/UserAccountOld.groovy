@@ -1,6 +1,6 @@
 package restaurantgrails
 
-class UserAccount {
+class UserAccountOld {
 
     String login
     String firstName
