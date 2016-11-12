@@ -33,10 +33,6 @@ grails.plugin.springsecurity.filterChain.chainMap = [
 grails.plugin.springsecurity.logout.postOnly = false// allows logout to work
 
 
-
-grails.plugin.springsecurity.ui.register.emailBody = 'Restaurant Grails $User.name Welcome! Your account was created. Thank You!'
-grails.plugin.springsecurity.ui.register.emailFrom = 'ticktwo.ticktwo@gmail.com'
-grails.plugin.springsecurity.ui.register.emailSubject = 'Restaurant Grails Welcome!'
 grails {
 	mail {
 		host = "smtp.gmail.com"
@@ -44,9 +40,11 @@ grails {
 		username = "ticktwo.ticktwo@gmail.com"
 		password = "TickTwoAdmin"
 		props = ["mail.smtp.auth":"true",
-				 "mail.smtp.socketFactory.port":"587",
-				 "mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
-				 "mail.smtp.socketFactory.fallback":"false"]
+				 "mail.smtp.starttls.enable" : "true"]
 
 	}
 }
+grails.mail.default.from="ticktwo.ticktwo@gmail.com"
+
+//grails.plugin.springsecurity.ui.register.emailBody = 'Welcome $user.username! Your account was created. Thank You!'
+grails.plugin.springsecurity.ui.register.emailSubject = 'Restaurant Grails Welcome!'

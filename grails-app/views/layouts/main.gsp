@@ -46,6 +46,23 @@
     </div>
 
     <asset:javascript src="application.js"/>
+<nobr>
+    <div id='loginLinkContainer'>
+        <sec:ifLoggedIn>
+            Logged in as <sec:username /> (<g:link controller='logout'>Logout</g:link>)
+        </sec:ifLoggedIn>
+        <sec:ifNotLoggedIn>
+            <g:link controller='login'>Login</g:link>
+        </sec:ifNotLoggedIn>
+
+        <sec:ifSwitched>
+            <a href='${request.contextPath}/j_spring_security_exit_user'>
+                Resume as <sec:switchedUserOriginalUsername />
+            </a>
+        </sec:ifSwitched>
+    </div>
+</nobr>
+
 
 </body>
 </html>
