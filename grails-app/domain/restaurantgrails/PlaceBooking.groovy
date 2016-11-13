@@ -6,7 +6,7 @@ class PlaceBooking {
     String hourStart
     String hourStop
 
-    static belongsTo = [userAccountOld:UserAccountOld]//enabling cascade delete - when removing user booking will be also removed
+    static belongsTo = [user:User]//enabling cascade delete - when removing user booking will be also removed
 
     static hasOne = [place:Place]
 

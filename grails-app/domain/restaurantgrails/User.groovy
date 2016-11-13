@@ -13,11 +13,16 @@ class User implements Serializable {
 
 	String username
 	String password
-	String email
 	boolean enabled = true
 	boolean accountExpired
 	boolean accountLocked
 	boolean passwordExpired
+
+	String firstName
+	String lastName
+	String email
+	String telephone
+	static hasMany = [placeBookings:PlaceBooking]
 
 	Set<Role> getAuthorities() {
 		UserRole.findAllByUser(this)*.role
