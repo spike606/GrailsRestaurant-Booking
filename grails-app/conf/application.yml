@@ -97,11 +97,15 @@ environments:
         dataSource:
             dbCreate: update
             url: jdbc:postgresql://localhost:5432/RestaurantGrails
+        recaptcha:
+            enabled: true
     test:
         dataSource:
             dbCreate: update
             url: jdbc:postgresql://localhost:5432/RestaurantGrails
     production:
+        recaptcha:
+            enabled: true
         dataSource:
             dbCreate: update
             url: jdbc:postgresql://localhost:5432/RestaurantGrails
@@ -125,3 +129,13 @@ environments:
                 defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
 server:
     contextPath: /RestaurantGrails
+recaptcha:
+#    proxy:
+#        server: "https://www.google.com/recaptcha/api/siteverify"   # IP or hostname of proxy server
+#        port: "80"     # Proxy server port, defaults to 80
+#        username: "ticktwo.ticktwo@gmail.com" # Optional username if proxy requires authentication
+#        password: "TickTwoAdmin" # Optional password if proxy requires authentication
+    publicKey: "6Ldw2AsUAAAAAL5M3zm_-6EBHlg4PJwLHsmgNOjn"
+    privateKey: "6Ldw2AsUAAAAADhuU6ueAQTufhnCj2XP8yPMIm1v"
+    includeScript: true
+    includeNoScript: true
