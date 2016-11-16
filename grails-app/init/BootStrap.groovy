@@ -1,3 +1,4 @@
+import restaurantgrails.Menu
 import restaurantgrails.Place
 import restaurantgrails.Role
 import restaurantgrails.User
@@ -33,6 +34,13 @@ class BootStrap {
         Place.findOrSaveWhere(tableNumber: "7", pricePerHour: "100")
         Place.findOrSaveWhere(tableNumber: "8", pricePerHour: "100")
         Place.findOrSaveWhere(tableNumber: "9", pricePerHour: "100")
+
+        Menu.findOrSaveWhere(dishName: "Spicy Beef Salad", price: "120")
+        Menu.findOrSaveWhere(dishName: "Crushed peas & mozzarella on toast with pecorino", price: "160")
+        Menu.findOrSaveWhere(dishName: "Crispy Roast Duck with Chinese Pancakes", price: "100")
+        Menu.findOrSaveWhere(dishName: "Beer Bread", price: "100")
+        Menu.findOrSaveWhere(dishName: "Roasted Squash Houmous", price: "90")
+        Menu.findOrSaveWhere(dishName: "Slow-cooked Beef Short Ribs", price: "125")
 
     }
     def destroy = {
