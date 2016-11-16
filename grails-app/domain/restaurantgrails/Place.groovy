@@ -9,5 +9,6 @@ class Place {
 //    PlaceBooking placeBooking
 
     static constraints = {
+//        pricePerHour display:false
     }
 }
