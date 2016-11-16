@@ -9,9 +9,14 @@ import org.springframework.web.context.request.RequestContextHolder as RCH
 
 class RegisterController extends grails.plugin.springsecurity.ui.RegisterController {
     RecaptchaService recaptchaService
+    def springSecurityService // first you have to define the service
+
 
     def register(MyRegisterCommand registerCommand) {
-
+        if(springSecurityService.getCurrentUser()){
+            // don't allow registration while user is logged in
+            redirect(uri:'/')
+        }
         if (!request.post) {
             return [registerCommand: new MyRegisterCommand()]
         }
