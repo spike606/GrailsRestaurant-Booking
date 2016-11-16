@@ -5,7 +5,8 @@ class Place {
     String tableNumber
     String pricePerHour
 
-    PlaceBooking placeBooking
+    static hasMany = [placeBookings: PlaceBooking]
+//    PlaceBooking placeBooking
 
     static constraints = {
     }
