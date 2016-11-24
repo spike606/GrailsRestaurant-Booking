@@ -38,7 +38,7 @@ class BootStrap {
         Place.findOrSaveWhere(tableNumber: "8", pricePerHour: "100")
         Place.findOrSaveWhere(tableNumber: "9", pricePerHour: "100")
 
-        def userBoooking = new PlaceBooking(hourStart: "12:00", place: Place.findWhere(("tableNumber"): "9"))
+        def userBoooking = new PlaceBooking(hourStart: "12:00", hourStop: "15:00", date: "12-12-2012", place: Place.findWhere(("tableNumber"): "9"))
         User.findWhere("username": "user").addToPlaceBookings(userBoooking).save()
 
         Menu.findOrSaveWhere(dishName: "Spicy Beef Salad", price: "120")

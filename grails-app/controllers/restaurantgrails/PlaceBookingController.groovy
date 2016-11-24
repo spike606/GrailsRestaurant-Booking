@@ -39,7 +39,7 @@ class PlaceBookingController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'placeBooking.label', default: 'PlaceBooking'), placeBooking.id])
+                flash.message = message(code: 'default.created.message', args: [" ", " "])
                 redirect placeBooking
             }
             '*' { respond placeBooking, [status: CREATED] }
@@ -68,7 +68,7 @@ class PlaceBookingController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'placeBooking.label', default: 'PlaceBooking'), placeBooking.id])
+                flash.message = message(code: 'default.updated.message', args: [" ", " "])
                 redirect placeBooking
             }
             '*'{ respond placeBooking, [status: OK] }
@@ -88,7 +88,7 @@ class PlaceBookingController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'placeBooking.label', default: 'PlaceBooking'), placeBooking.id])
+                flash.message = message(code: 'default.deleted.message', args: [" ", " "])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }

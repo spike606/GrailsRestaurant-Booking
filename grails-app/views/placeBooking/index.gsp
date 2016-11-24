@@ -18,8 +18,8 @@
             <g:if test="${flash.message}">
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
-            <f:table collection="${placeBookingList}" />
-
+            <f:table collection="${placeBookingList}"
+                     properties="['date', 'hourStart', 'hourStop', 'user', 'place']"/>
             <div class="pagination">
                 <g:paginate total="${placeBookingCount ?: 0}" />
             </div>
