@@ -8,7 +8,8 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class PlaceController {
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+//    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    static allowedMethods = [update: "PUT"]
 
 
     def index(Integer max) {
@@ -21,7 +22,8 @@ class PlaceController {
     }
 
     def create() {
-        respond new Place(params)
+        response.sendError(404)
+//        respond new Place(params)
     }
 
     @Transactional
@@ -81,21 +83,22 @@ class PlaceController {
     @Transactional
     def delete(Place place) {
 
-        if (place == null) {
-            transactionStatus.setRollbackOnly()
-            notFound()
-            return
-        }
-
-        place.delete flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'place.label', default: 'Place'), place.id])
-                redirect action:"index", method:"GET"
-            }
-            '*'{ render status: NO_CONTENT }
-        }
+//        if (place == null) {
+//            transactionStatus.setRollbackOnly()
+//            notFound()
+//            return
+//        }
+//
+//        place.delete flush:true
+//
+//        request.withFormat {
+//            form multipartForm {
+//                flash.message = message(code: 'default.deleted.message', args: [message(code: 'place.label', default: 'Place'), place.id])
+//                redirect action:"index", method:"GET"
+//            }
+//            '*'{ render status: NO_CONTENT }
+//        }
+        response.sendError(404)
     }
 
     protected void notFound() {
