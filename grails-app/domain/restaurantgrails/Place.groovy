@@ -6,6 +6,6 @@ class Place {
     String pricePerHour
 
     static constraints = {
-//        pricePerHour display:false
+        tableNumber readonly:true
     }
 }

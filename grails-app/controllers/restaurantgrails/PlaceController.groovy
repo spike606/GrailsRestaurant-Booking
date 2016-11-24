@@ -71,7 +71,7 @@ class PlaceController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'place.label', default: 'Place'), place.id])
+                flash.message = message(code: 'default.updated.message', args: [" ", " "])
                 redirect place
             }
             '*'{ respond place, [status: OK] }

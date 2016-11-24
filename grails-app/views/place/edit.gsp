@@ -29,7 +29,8 @@
             <g:form resource="${this.place}" method="PUT">
                 <g:hiddenField name="version" value="${this.place?.version}" />
                 <fieldset class="form">
-                    <f:all bean="place"/>
+                    %{--<f:all bean="place"/>--}%
+                    <f:field bean="place" property="pricePerHour" />
                 </fieldset>
                 <fieldset class="buttons">
                     <input class="save" type="submit" value="${message(code: 'default.button.update.label', default: 'Update')}" />
