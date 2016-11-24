@@ -44,6 +44,7 @@ grails {
 		props = ["mail.smtp.auth":"true",
 				 "mail.smtp.starttls.enable" : "true"]
 
+
 	}
 }
 grails.mail.default.from="ticktwo.ticktwo@gmail.com"
