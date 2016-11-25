@@ -8,6 +8,8 @@ class PlaceBookingController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+    def springSecurityService
+
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond PlaceBooking.list(params), model:[placeBookingCount: PlaceBooking.count()]
@@ -18,17 +20,22 @@ class PlaceBookingController {
     }
 
     def create() {
-        respond new PlaceBooking(params)
+        respond new PlaceBooking(params), model:[places: Place.all]
     }
+
 
     @Transactional
     def save(PlaceBooking placeBooking) {
+
+
         if (placeBooking == null) {
             transactionStatus.setRollbackOnly()
             notFound()
             return
         }
-
+        placeBooking.place = Place.findWhere("tableNumber": params.selectedTable)
+        placeBooking.hourStop = placeBooking.hourStart.toInteger() + placeBooking.hourStop.toInteger()
+        placeBooking.user = User.findWhere("username": springSecurityService.authentication.principal.username)
         if (placeBooking.hasErrors()) {
             transactionStatus.setRollbackOnly()
             respond placeBooking.errors, view:'create'

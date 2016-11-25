@@ -25,9 +25,28 @@
                 </g:eachError>
             </ul>
             </g:hasErrors>
-            <g:form action="save">
+            <g:img dir="images" file="tables.jpg" />
+            <g:form action="Save">
                 <fieldset class="form">
-                    <f:all bean="placeBooking"/>
+                    %{--<f:all bean="placeBooking"/>--}%
+                <div class="fieldcontain">
+                    <label >Date</label>
+                    <g:datePicker name="date" value="${date}" precision="day" years="${2016..2020}"></g:datePicker>
+                </div>
+                <div class="fieldcontain">
+                    <label >Hour start</label>
+                    <g:select name="hourStart" value="${hourStart}" from="${10..18}"/>
+                </div>
+                <div class="fieldcontain">
+                    <label >Hours</label>
+                    <g:select name="hourStop" value="${hourStop}" from="${1..4}"/>
+                </div>
+                <div class="fieldcontain">
+                    <label >Table number</label>
+                    <g:select name="selectedTable" optionKey="${{it.tableNumber}}"
+                              optionValue="${{it.tableNumber + " (price: " + it.pricePerHour + ")"}}" from="${places}" />
+
+                </div>
                 </fieldset>
                 <fieldset class="buttons">
                     <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
