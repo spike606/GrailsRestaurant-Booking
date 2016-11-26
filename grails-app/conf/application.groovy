@@ -16,7 +16,7 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	[pattern: '/user/**', 		 access: ['ROLE_ADMIN']],
 	[pattern: '/role/**', 		 access: ['ROLE_ADMIN']],
 	[pattern: '/securityInfo/**',access: ['ROLE_ADMIN']],
-	[pattern: '/register/**',access: ['IS_AUTHENTICATED_ANONYMOUSLY']],
+	[pattern: '/register/**',access: ['permitAll']],
 	[pattern: '/menu/**',access: ['permitAll']],
 	[pattern: '/place/**',access: ['ROLE_ADMIN']],
 	[pattern: '/placeBooking/**',access: ['ROLE_ADMIN']],
@@ -52,3 +52,4 @@ grails.mail.default.from="ticktwo.ticktwo@gmail.com"
 
 //grails.plugin.springsecurity.ui.register.emailBody = 'Welcome $user.username! Your account was created. Thank You!'
 grails.plugin.springsecurity.ui.register.emailSubject = 'Restaurant Grails Welcome!'
+grails.plugin.wkhtmltopdf.binary = "C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe"

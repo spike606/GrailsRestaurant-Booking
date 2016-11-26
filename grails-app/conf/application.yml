@@ -139,3 +139,5 @@ recaptcha:
     privateKey: "6Ldw2AsUAAAAADhuU6ueAQTufhnCj2XP8yPMIm1v"
     includeScript: true
     includeNoScript: true
+wkhtmltopdf:
+    binary: C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe
