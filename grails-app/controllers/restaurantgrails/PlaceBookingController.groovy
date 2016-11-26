@@ -84,7 +84,8 @@ class PlaceBookingController {
     }
 
     def edit(PlaceBooking placeBooking) {
-        respond placeBooking
+        def hours = placeBooking.hourStop.toInteger() -  placeBooking.hourStart.toInteger()
+        respond placeBooking, model:[places: Place.all, date: placeBooking.date, hourStart: placeBooking.hourStart,hourStop: hours, tableNumber: placeBooking.place.tableNumber]
     }
 
     @Transactional
@@ -94,7 +95,9 @@ class PlaceBookingController {
             notFound()
             return
         }
-
+        placeBooking.place = Place.findWhere("tableNumber": params.selectedTable)
+        placeBooking.hourStop = placeBooking.hourStart.toInteger() + placeBooking.hourStop.toInteger()
+        placeBooking.user = User.findWhere("username": springSecurityService.authentication.principal.username)
         if (placeBooking.hasErrors()) {
             transactionStatus.setRollbackOnly()
             respond placeBooking.errors, view:'edit'
@@ -103,9 +106,28 @@ class PlaceBookingController {
 
         placeBooking.save flush:true
 
+        if(!SpringSecurityUtils.ifAllGranted("ROLE_ADMIN")){
+            def total = ((placeBooking.hourStop.toInteger() - placeBooking.hourStart.toInteger())* placeBooking.place.pricePerHour.toInteger()).toString()
+            def date = placeBooking.date.getAt(Calendar.YEAR).toString() + " " + placeBooking.date.getAt(Calendar.MONTH).toString() + " "+ placeBooking.date.getAt(Calendar.DAY_OF_MONTH).toString()
+            def byte[] pdfData = wkhtmltoxService.makePdf(
+                    view: "receipeTemplate",
+                    model: [placeBooking: placeBooking,
+                            total: total,
+                            date: date])
+
+            sendMail {
+                multipart(true)
+                to "$placeBooking.user.email"
+                subject "Restaurant Grails - booking confirmation - UPDATE"
+                body 'Please see attachment.'
+                attachBytes "Booking.pdf", "application/pdf", pdfData
+
+            }
+        }
+
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [" ", " "])
+                flash.message = message(code: 'default.updated.message', args: ["- check your email for update ", " "])
                 redirect placeBooking
             }
             '*'{ respond placeBooking, [status: OK] }
