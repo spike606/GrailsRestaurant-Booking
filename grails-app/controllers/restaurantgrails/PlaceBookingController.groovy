@@ -1,8 +1,8 @@
 package restaurantgrails
 
+import grails.plugin.springsecurity.SpringSecurityUtils
 import grails.plugin.springsecurity.annotation.Secured
 import org.grails.plugins.wkhtmltopdf.WkhtmltoxService
-
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
@@ -17,7 +17,14 @@ class PlaceBookingController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond PlaceBooking.list(params), model:[placeBookingCount: PlaceBooking.count()]
+        def currentUser = User.findWhere("username": springSecurityService.authentication.principal.username)
+
+        if(SpringSecurityUtils.ifAllGranted("ROLE_ADMIN")){
+            respond PlaceBooking.list(params), model:[placeBookingCount: PlaceBooking.count()]
+        }else{
+            respond PlaceBooking.findAllByUser(currentUser), model:[placeBookingCount: currentUser.placeBookings.size()]
+
+        }
     }
 
     def show(PlaceBooking placeBooking) {
