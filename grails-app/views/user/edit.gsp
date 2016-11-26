@@ -18,6 +18,10 @@
 				<tbody>
 				<s2ui:textFieldRow name='username' labelCodeDefault='Username'/>
 				<s2ui:passwordFieldRow name='password' labelCodeDefault='Password'/>
+				<s2ui:textFieldRow name='firstName' labelCodeDefault='First name'/>
+				<s2ui:textFieldRow name='lastName' labelCodeDefault='Last name'/>
+				<s2ui:textFieldRow name='email' labelCodeDefault='E-mail'/>
+				<s2ui:textFieldRow name='telephone' labelCodeDefault='Telephone'/>
 				<s2ui:checkboxRow name='enabled' labelCodeDefault='Enabled'/>
 				<s2ui:checkboxRow name='accountExpired' labelCodeDefault='Account Expired'/>
 				<s2ui:checkboxRow name='accountLocked' labelCodeDefault='Account Locked'/>
