@@ -4,7 +4,7 @@
     <meta name="layout" content="main"/>
     <title>Welcome to Restaurant Grails</title>
 
-    <asset:link rel="icon" href="favicon.ico" type="image/x-ico" />
+    <asset:link  rel="icon" href="favicon.ico" type="image/x-ico" />
 </head>
 <body>
     <content tag="nav">

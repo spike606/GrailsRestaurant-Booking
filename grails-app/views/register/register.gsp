@@ -11,7 +11,7 @@
 	};
 </script>
 <s2ui:formContainer type='register' focus='username' width='800px'>
-	<s2ui:form beanName='registerCommand' method="post">
+	<s2ui:form beanName='registerCommand' method="post" >
 		<g:if test='${emailSent}'>
 		<br/>
 		<g:message code='spring.security.ui.register.sent'/>
