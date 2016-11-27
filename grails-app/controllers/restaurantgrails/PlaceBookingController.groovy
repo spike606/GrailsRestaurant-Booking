@@ -19,7 +19,7 @@ class PlaceBookingController {
         params.max = Math.min(max ?: 10, 100)
         def currentUser = User.findWhere("username": springSecurityService.authentication.principal.username)
 
-        if(SpringSecurityUtils.ifAllGranted("ROLE_ADMIN")){
+        if(SpringSecurityUtils.ifAnyGranted("ROLE_ADMIN")){
             respond PlaceBooking.list(params), model:[placeBookingCount: PlaceBooking.count()]
         }else{
             respond PlaceBooking.findAllByUser(currentUser), model:[placeBookingCount: currentUser.placeBookings.size()]

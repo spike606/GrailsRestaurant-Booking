@@ -9,44 +9,8 @@
 <body>
     <content tag="nav">
 
-    <sec:ifLoggedIn>
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Booking<span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li><g:link url="[action:'create',controller:'placeBooking']">Book place</g:link>
-                <sec:ifNotGranted roles="ROLE_ADMIN">
-                    <li><g:link url="[action:'index',controller:'placeBooking']">My bookings</g:link></li>
-                </sec:ifNotGranted>
-                <sec:ifAllGranted roles="ROLE_ADMIN">
-                    <li><g:link url="[action:'index',controller:'placeBooking']">All bookings</g:link></li>
-                </sec:ifAllGranted>
-            </ul>
-        </li>
-    </sec:ifLoggedIn>
-    <sec:ifLoggedIn>
-        <sec:ifAllGranted roles="ROLE_ADMIN">
-            <li class="dropdown">
-                <g:link controller='place'>Places</g:link>
-            </li>
-            <li class="dropdown">
-                <g:link controller='user'>Admin panel</g:link>
-            </li>
-        </sec:ifAllGranted>
-            <li class="dropdown">
-                <g:link controller='logout'>Logout</g:link>
-            </li>
-            <li class="dropdown" disabled="true">
-                <g:link>Logged in as <sec:username/></g:link>
-            </li>
-        </sec:ifLoggedIn>
-        <sec:ifNotLoggedIn>
-            <li class="dropdown">
-                <g:link controller='register'>Register</g:link>
-            </li>
-            <li class="dropdown">
-                <g:link controller='login'>Login</g:link>
-            </li>
-        </sec:ifNotLoggedIn>
+
+
 
     </content>
 
