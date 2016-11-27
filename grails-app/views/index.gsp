@@ -2,47 +2,52 @@
 <html>
 <head>
     <meta name="layout" content="main"/>
-    <title>Welcome to Grails</title>
+    <title>Welcome to Restaurant Grails</title>
 
     <asset:link rel="icon" href="favicon.ico" type="image/x-ico" />
 </head>
 <body>
     <content tag="nav">
+
+    <sec:ifLoggedIn>
         <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Application Status <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Booking<span class="caret"></span></a>
             <ul class="dropdown-menu">
-                <li><a href="#">Environment: ${grails.util.Environment.current.name}</a></li>
-                <li><a href="#">App profile: ${grailsApplication.config.grails?.profile}</a></li>
-                <li><a href="#">App version:
-                    <g:meta name="info.app.version"/></a>
-                </li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Grails version:
-                    <g:meta name="info.app.grailsVersion"/></a>
-                </li>
-                <li><a href="#">Groovy version: ${GroovySystem.getVersion()}</a></li>
-                <li><a href="#">JVM version: ${System.getProperty('java.version')}</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Reloading active: ${grails.util.Environment.reloadingAgentEnabled}</a></li>
+                <li><g:link url="[action:'create',controller:'placeBooking']">Book place</g:link>
+                <sec:ifNotGranted roles="ROLE_ADMIN">
+                    <li><g:link url="[action:'index',controller:'placeBooking']">My bookings</g:link></li>
+                </sec:ifNotGranted>
+                <sec:ifAllGranted roles="ROLE_ADMIN">
+                    <li><g:link url="[action:'index',controller:'placeBooking']">All bookings</g:link></li>
+                </sec:ifAllGranted>
             </ul>
         </li>
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Artefacts <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li><a href="#">Controllers: ${grailsApplication.controllerClasses.size()}</a></li>
-                <li><a href="#">Domains: ${grailsApplication.domainClasses.size()}</a></li>
-                <li><a href="#">Services: ${grailsApplication.serviceClasses.size()}</a></li>
-                <li><a href="#">Tag Libraries: ${grailsApplication.tagLibClasses.size()}</a></li>
-            </ul>
-        </li>
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Installed Plugins <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <g:each var="plugin" in="${applicationContext.getBean('pluginManager').allPlugins}">
-                    <li><a href="#">${plugin.name} - ${plugin.version}</a></li>
-                </g:each>
-            </ul>
-        </li>
+    </sec:ifLoggedIn>
+    <sec:ifLoggedIn>
+        <sec:ifAllGranted roles="ROLE_ADMIN">
+            <li class="dropdown">
+                <g:link controller='place'>Places</g:link>
+            </li>
+            <li class="dropdown">
+                <g:link controller='user'>Admin panel</g:link>
+            </li>
+        </sec:ifAllGranted>
+            <li class="dropdown">
+                <g:link controller='logout'>Logout</g:link>
+            </li>
+            <li class="dropdown" disabled="true">
+                <g:link>Logged in as <sec:username/></g:link>
+            </li>
+        </sec:ifLoggedIn>
+        <sec:ifNotLoggedIn>
+            <li class="dropdown">
+                <g:link controller='register'>Register</g:link>
+            </li>
+            <li class="dropdown">
+                <g:link controller='login'>Login</g:link>
+            </li>
+        </sec:ifNotLoggedIn>
+
     </content>
 
     <div class="svg" role="presentation">
@@ -53,7 +58,7 @@
 
     <div id="content" role="main">
         <section class="row colset-2-its">
-            <h1>Welcome to Grails</h1>
+            <h1>Welcome to Restaurant Grails</h1>
 
             <p>
                 Congratulations, you have successfully started your first Grails application! At the moment
@@ -61,17 +66,6 @@
                 whatever content you may choose. Below is a list of controllers that are currently deployed in
                 this application, click on each to execute its default action:
             </p>
-
-            <div id="controllers" role="navigation">
-                <h2>Available Controllers:</h2>
-                <ul>
-                    <g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
-                        <li class="controller">
-                            <g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link>
-                        </li>
-                    </g:each>
-                </ul>
-            </div>
         </section>
     </div>
 

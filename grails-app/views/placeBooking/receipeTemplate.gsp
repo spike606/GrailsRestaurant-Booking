@@ -154,7 +154,7 @@
       <div id="project">
         <div><span>USERNAME</span> ${placeBooking.user.username}</div>
         <div><span>FIRST NAME</span> ${placeBooking.user.firstName}</div>
-        <div><span>LAST NAME</span> ${placeBooking.user.firstName}</div>
+        <div><span>LAST NAME</span> ${placeBooking.user.lastName}</div>
         <div><span>EMAIL</span> ${placeBooking.user.email}</div>
         <div><span>TELEPHONE</span> ${placeBooking.user.telephone}</div>
       </div>

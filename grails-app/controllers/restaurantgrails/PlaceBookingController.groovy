@@ -123,18 +123,22 @@ class PlaceBookingController {
                 attachBytes "Booking.pdf", "application/pdf", pdfData
 
             }
-        }
 
+        }
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: ["- check your email for update ", " "])
+                flash.message = message(code: 'default.updated.message', args: ["", " "])
                 redirect placeBooking
             }
             '*'{ respond placeBooking, [status: OK] }
         }
+
+
+
     }
 
     @Transactional
+    @Secured('ROLE_ADMIN')
     def delete(PlaceBooking placeBooking) {
 
         if (placeBooking == null) {
