@@ -55,8 +55,8 @@ class BootStrap {
 
 
 
-        def userBoooking = new PlaceBooking(hourStart: 12, hourStop: 15, date: "12-12-2012", place: Place.findWhere(("tableNumber"): "9"))
-        User.findWhere("username": "user").addToPlaceBookings(userBoooking).save()
+//        def userBoooking = new PlaceBooking(hourStart: 12, hours: 15, date: new Date(2016,12,22), place: Place.findWhere(("tableNumber"): "9"))
+//        User.findWhere("username": "user").addToPlaceBookings(userBoooking).save()
 
 
 

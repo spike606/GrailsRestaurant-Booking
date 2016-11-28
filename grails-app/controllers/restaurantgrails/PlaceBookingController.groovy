@@ -46,7 +46,6 @@ class PlaceBookingController {
             return
         }
         placeBooking.place = Place.findWhere("tableNumber": params.selectedTable)
-        placeBooking.hourStop = placeBooking.hourStart.toInteger() + placeBooking.hourStop.toInteger()
         placeBooking.user = User.findWhere("username": springSecurityService.authentication.principal.username)
         if (placeBooking.hasErrors()) {
             transactionStatus.setRollbackOnly()
@@ -57,7 +56,7 @@ class PlaceBookingController {
         placeBooking.save flush:true
 
 
-        def total = ((placeBooking.hourStop.toInteger() - placeBooking.hourStart.toInteger())* placeBooking.place.pricePerHour.toInteger()).toString()
+        def total = (placeBooking.hours * placeBooking.place.pricePerHour).toString()
         def date = placeBooking.date.getAt(Calendar.YEAR).toString() + " " + placeBooking.date.getAt(Calendar.MONTH).toString() + " "+ placeBooking.date.getAt(Calendar.DAY_OF_MONTH).toString()
         def byte[] pdfData = wkhtmltoxService.makePdf(
                 view: "receipeTemplate",
@@ -84,8 +83,8 @@ class PlaceBookingController {
     }
 
     def edit(PlaceBooking placeBooking) {
-        def hours = placeBooking.hourStop.toInteger() -  placeBooking.hourStart.toInteger()
-        respond placeBooking, model:[places: Place.all, date: placeBooking.date, hourStart: placeBooking.hourStart,hourStop: hours, tableNumber: placeBooking.place.tableNumber]
+        def hours = placeBooking.hours -  placeBooking.hourStart
+        respond placeBooking, model:[places: Place.all, date: placeBooking.date, hourStart: placeBooking.hourStart,hours: hours, tableNumber: placeBooking.place.tableNumber]
     }
 
     @Transactional
@@ -96,7 +95,6 @@ class PlaceBookingController {
             return
         }
         placeBooking.place = Place.findWhere("tableNumber": params.selectedTable)
-        placeBooking.hourStop = placeBooking.hourStart.toInteger() + placeBooking.hourStop.toInteger()
         placeBooking.user = User.findWhere("username": springSecurityService.authentication.principal.username)
         if (placeBooking.hasErrors()) {
             transactionStatus.setRollbackOnly()
@@ -107,7 +105,7 @@ class PlaceBookingController {
         placeBooking.save flush:true
 
         if(!SpringSecurityUtils.ifAllGranted("ROLE_ADMIN")){
-            def total = ((placeBooking.hourStop.toInteger() - placeBooking.hourStart.toInteger())* placeBooking.place.pricePerHour.toInteger()).toString()
+            def total = (placeBooking.hours * placeBooking.place.pricePerHour).toString()
             def date = placeBooking.date.getAt(Calendar.YEAR).toString() + " " + placeBooking.date.getAt(Calendar.MONTH).toString() + " "+ placeBooking.date.getAt(Calendar.DAY_OF_MONTH).toString()
             def byte[] pdfData = wkhtmltoxService.makePdf(
                     view: "receipeTemplate",

@@ -177,7 +177,7 @@
             <td class="unit">${placeBooking.place.pricePerHour}</td>
             <td class="service">${date}</td>
             <td class="service">${placeBooking.hourStart}</td>
-            <td class="service">${placeBooking.hourStop}</td>
+            <td class="service">${placeBooking.hours}</td>
             <td class="total">${total}</td>
           </tr>
         </tbody>

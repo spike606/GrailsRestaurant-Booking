@@ -39,7 +39,7 @@
                 </div>
                 <div class="fieldcontain">
                     <label >Hours</label>
-                    <g:select name="hourStop" value="${hourStop}" from="${1..4}"/>
+                    <g:select name="hours" value="${hours}" from="${1..4}"/>
                 </div>
                 <div class="fieldcontain">
                     <label >Table number</label>

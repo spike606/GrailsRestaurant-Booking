@@ -20,11 +20,11 @@
             </g:if>
             <sec:ifAllGranted roles="ROLE_ADMIN">
                 <f:table collection="${placeBookingList}"
-                         properties="['date', 'hourStart', 'hourStop', 'user', 'place']" />
+                         properties="['date', 'hourStart', 'hours', 'user', 'place']" />
             </sec:ifAllGranted>
             <sec:ifNotGranted roles="ROLE_ADMIN">
                 <f:table collection="${placeBookingList}"
-                         properties="['date', 'hourStart', 'hourStop']" />
+                         properties="['date', 'hourStart', 'hours']" />
             </sec:ifNotGranted>
 
             <div class="pagination">

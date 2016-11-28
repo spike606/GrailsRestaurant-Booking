@@ -34,7 +34,7 @@
                             <div class="property-value"><f:display bean="placeBooking" property="hourStart"/></div>
                         <li class="fieldcontain">
                             <span class="property-label">Hour Stop</span>
-                            <div class="property-value"><f:display bean="placeBooking" property="hourStop"/></div>
+                            <div class="property-value"><f:display bean="placeBooking" property="hours"/></div>
                         </li>
                         <li class="fieldcontain">
                             <span class="property-label">Place</span>
