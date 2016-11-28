@@ -104,7 +104,6 @@ class PlaceBookingController {
 
         placeBooking.save flush:true
 
-        if(!SpringSecurityUtils.ifAllGranted("ROLE_ADMIN")){
             def total = (placeBooking.hours * placeBooking.place.pricePerHour).toString()
             def date = placeBooking.date.getAt(Calendar.YEAR).toString() + " " + placeBooking.date.getAt(Calendar.MONTH).toString() + " "+ placeBooking.date.getAt(Calendar.DAY_OF_MONTH).toString()
             def byte[] pdfData = wkhtmltoxService.makePdf(
@@ -122,7 +121,6 @@ class PlaceBookingController {
 
             }
 
-        }
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: ["", " "])

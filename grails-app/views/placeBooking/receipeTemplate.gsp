@@ -167,8 +167,8 @@
             <th class="desc">PRICE PER HOUR</th>
             <th>DATE</th>
             <th>HOUR START</th>
-            <th>HOUR STOP</th>
-            <th>TOTAL</th>
+            <th>HOURS</th>
+            <th>TOTAL COST</th>
           </tr>
         </thead>
         <tbody>
