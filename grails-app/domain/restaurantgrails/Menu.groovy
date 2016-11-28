@@ -6,9 +6,9 @@ import grails.rest.Resource
 class Menu {
 
     String dishName
-    String price
+    int  price
     static constraints = {
-        dishName blank:false
-        price blank: false
+        dishName blank: false
+        price blank: false, validator: {return it > 0}
     }
 }

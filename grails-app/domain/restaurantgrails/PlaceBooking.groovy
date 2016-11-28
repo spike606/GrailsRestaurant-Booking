@@ -6,18 +6,16 @@ import java.time.LocalTime
 class PlaceBooking {
 
     Date date
-    String hourStart
-//    String hourStart
-    String hourStop
+    int hourStart
+    int hourStop
     Place place
     static belongsTo = [user:User]//enabling cascade delete - when removing user booking will be also removed
 
-//    static belongsTo = [place:Place]
 
     static constraints = {
-        date nullable: true
-        hourStart nullable: true
-        hourStop nullable: true
+        date nullable: false
+        hourStart nullable: false, range: 10..18
+        hourStop nullable: false, range: 1..4
         place nullable: true
         user nullable: true
 

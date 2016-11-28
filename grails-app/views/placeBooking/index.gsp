@@ -18,8 +18,15 @@
             <g:if test="${flash.message}">
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
-            <f:table collection="${placeBookingList}"
-                     properties="['date', 'hourStart', 'hourStop', 'user', 'place']"/>
+            <sec:ifAllGranted roles="ROLE_ADMIN">
+                <f:table collection="${placeBookingList}"
+                         properties="['date', 'hourStart', 'hourStop', 'user', 'place']" />
+            </sec:ifAllGranted>
+            <sec:ifNotGranted roles="ROLE_ADMIN">
+                <f:table collection="${placeBookingList}"
+                         properties="['date', 'hourStart', 'hourStop']" />
+            </sec:ifNotGranted>
+
             <div class="pagination">
                 <g:paginate total="${placeBookingCount ?: 0}" />
             </div>

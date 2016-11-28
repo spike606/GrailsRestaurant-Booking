@@ -6,9 +6,9 @@ import groovy.transform.ToString
 class Place {
 
     String tableNumber
-    String pricePerHour
+    int  pricePerHour
 
     static constraints = {
-//        tableNumber readonly:true
+        pricePerHour blank:false, validator: {return it > 0}
     }
 }

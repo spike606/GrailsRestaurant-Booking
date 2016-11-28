@@ -21,9 +21,9 @@ class RegisterController extends grails.plugin.springsecurity.ui.RegisterControl
 
         def recaptchaOK = true
         //temp off
-//        if (!recaptchaService.verifyAnswer(session, request.getRemoteAddr(), params)) {
-//            recaptchaOK = false
-//        }
+        if (!recaptchaService.verifyAnswer(session, request.getRemoteAddr(), params)) {
+            recaptchaOK = false
+        }
         if (registerCommand.hasErrors() || !recaptchaOK) {
             return [registerCommand: registerCommand]
         }
@@ -47,8 +47,8 @@ class RegisterController extends grails.plugin.springsecurity.ui.RegisterControl
 
         sendVerifyRegistrationMail registrationCode, user, registerCommand.email
 
-        [emailSent: false, registerCommand: registerCommand]//send email off
-//        [emailSent: true, registerCommand: registerCommand]//send email on
+//        [emailSent: false, registerCommand: registerCommand]//send email off
+        [emailSent: true, registerCommand: registerCommand]//send email on
 
     }
     void afterPropertiesSet() {
@@ -85,7 +85,7 @@ class MyRegisterCommand extends RegisterCommand {
     String telephone
 
     static constraints = {
-        username validator: { value, command ->
+        username size: 4..15, validator: { value, command ->
             if (!value) {
                 return
             }
@@ -94,9 +94,14 @@ class MyRegisterCommand extends RegisterCommand {
                 return 'registerCommand.username.unique'
             }
         }
-        email email: true
+        email email: true, size: 4..25
         password validator: RegisterController.passwordValidator
         password2 nullable: true, validator: RegisterController.password2Validator
+
+        firstName blank: false, size: 4..15
+        lastName blank: false, size: 4..15
+        telephone blank: false, size: 6..9
+
     }
 
 }
