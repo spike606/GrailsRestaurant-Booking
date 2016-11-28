@@ -82,7 +82,7 @@ class MyRegisterCommand extends RegisterCommand {
     String password2
 	String firstName
     String lastName
-    String telephone
+    int telephone
 
     static constraints = {
         username size: 4..15, validator: { value, command ->
@@ -100,7 +100,9 @@ class MyRegisterCommand extends RegisterCommand {
 
         firstName blank: false, size: 4..15
         lastName blank: false, size: 4..15
-        telephone blank: false, size: 6..9
+        telephone blank: false, validator: {
+            return (it.toString().size() >= 6 && it.toString().size() <= 9)
+        }
 
     }
 

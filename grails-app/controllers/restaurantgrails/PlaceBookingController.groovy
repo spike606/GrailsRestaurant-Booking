@@ -75,7 +75,7 @@ class PlaceBookingController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [" - check your email ", " "])
+                flash.message = message(code: 'default.created.message', args: [g.message(code: 'placeBooking.template.checkemail'), " "])
                 redirect placeBooking
             }
             '*' { respond placeBooking, [status: CREATED] }

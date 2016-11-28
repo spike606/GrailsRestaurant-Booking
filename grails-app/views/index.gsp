@@ -2,7 +2,8 @@
 <html>
 <head>
     <meta name="layout" content="main"/>
-    <title>Welcome to Restaurant Grails</title>
+    <title><g:message code='index.welcome'/></title>
+
 
     <asset:link  rel="icon" href="favicon.ico" type="image/x-ico" />
 </head>
@@ -22,7 +23,7 @@
 
     <div id="content" role="main">
         <section class="row colset-2-its">
-            <h1>Welcome to Restaurant Grails</h1>
+            <h1><g:message code='index.welcome'/></h1>
 
             <p>
                 Congratulations, you have successfully started your first Grails application! At the moment

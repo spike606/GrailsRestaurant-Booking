@@ -24,14 +24,15 @@
 		<br/>
 		<table>
 			<tbody>
-			<s2ui:textFieldRow name='username' size='15' labelCodeDefault='Username'/>
-			<s2ui:textFieldRow name='firstName' size='15' labelCodeDefault='First Name'/>
-			<s2ui:textFieldRow name='lastName' size='15' labelCodeDefault='Last Name'/>
-			<s2ui:textFieldRow name='email' size='25' labelCodeDefault='E-mail'/>
-			<s2ui:textFieldRow name='telephone' size='9' labelCodeDefault='Telephone'/>
-			<s2ui:passwordFieldRow name='password' size='15' labelCodeDefault='Password'/>
-			<s2ui:passwordFieldRow name='password2' size='15' labelCodeDefault='Password (again)'/>
+			<s2ui:textFieldRow name='username' size='15' labelCodeDefault="${message(code:'spring.security.ui.register.username')}"/>
+			<s2ui:textFieldRow name='firstName' size='15' labelCodeDefault="${message(code:'spring.security.ui.register.firstName')}"/>
+			<s2ui:textFieldRow name='lastName' size='15' labelCodeDefault="${message(code:'spring.security.ui.register.lastname')}"/>
+			<s2ui:textFieldRow name='email' size='25' labelCodeDefault="${message(code:'spring.security.ui.register.email')}"/>
+			<s2ui:textFieldRow name='telephone' size='9' labelCodeDefault="${message(code:'spring.security.ui.register.telephone')}"/>
+			<s2ui:passwordFieldRow name='password' size='15' labelCodeDefault="${message(code:'spring.security.ui.register.password')}"/>
+			<s2ui:passwordFieldRow name='password2' size='15' labelCodeDefault="${message(code:'spring.security.ui.register.password2')}"/>
 			</tbody>
+
 		</table>
 		<s2ui:submitButton elementId='submit' messageCode='spring.security.ui.register.submit'/>
 		</g:else>

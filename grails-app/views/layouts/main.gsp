@@ -39,14 +39,14 @@
                     <g:pageProperty name="page.nav" />
                     <sec:ifLoggedIn>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Booking<span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><g:message code='main.booking'/><span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                            <li><g:link url="[action:'create',controller:'placeBooking']">Book place</g:link>
+                            <li><g:link url="[action:'create',controller:'placeBooking']"><g:message code='main.book'/></g:link>
                                 <sec:ifNotGranted roles="ROLE_ADMIN">
-                                    <li><g:link url="[action:'index',controller:'placeBooking']">My bookings</g:link></li>
+                                    <li><g:link url="[action:'index',controller:'placeBooking']"><g:message code='main.mybookings'/></g:link></li>
                                 </sec:ifNotGranted>
                                 <sec:ifAllGranted roles="ROLE_ADMIN">
-                                    <li><g:link url="[action:'index',controller:'placeBooking']">All bookings</g:link></li>
+                                    <li><g:link url="[action:'index',controller:'placeBooking']"><g:message code='main.allbookings'/></g:link></li>
                                 </sec:ifAllGranted>
                             </ul>
                         </li>
@@ -54,32 +54,32 @@
                     <sec:ifLoggedIn>
                         <sec:ifAllGranted roles="ROLE_ADMIN">
                             <li class="dropdown">
-                                <g:link controller="place">Places</g:link>
+                                <g:link controller="place"><g:message code='main.places'/></g:link>
                             </li>
                             <li class="dropdown">
-                                <g:link controller="user">Admin panel</g:link>
+                                <g:link controller="user"><g:message code='main.adminpanel'/></g:link>
                             </li>
                         </sec:ifAllGranted>
                         <li class="dropdown">
-                            <g:link controller='logout'>Logout</g:link>
+                            <g:link controller='logout'><g:message code='main.logout'/></g:link>
                         </li>
                         <li class="dropdown" disabled="true">
-                            <g:link>Logged in as <sec:username/></g:link>
+                            <g:link><g:message code='main.loggedas'/><sec:username/></g:link>
                         </li>
                     </sec:ifLoggedIn>
                     <sec:ifNotLoggedIn>
                         <li class="dropdown">
-                            <g:link controller='register'>Register</g:link>
+                            <g:link controller='register'><g:message code='main.register'/></g:link>
                         </li>
                         <li class="dropdown">
-                            <g:link controller='login'>Login</g:link>
+                            <g:link controller='login'><g:message code='main.login'/></g:link>
                         </li>
                     </sec:ifNotLoggedIn>
                 </ul>
             </div>
             <form method="get">
                 <g:localeSelect name="lang" value="${locale}"/>
-                <input type="submit" value="Change locale"/>
+                <input type="submit" value="${message(code:'main.locale')}"/>
             </form>
 
         </div>

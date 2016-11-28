@@ -21,7 +21,7 @@ class User implements Serializable {
 	String firstName
 	String lastName
 	String email
-	String telephone
+	int telephone
 	static hasMany = [placeBookings:PlaceBooking]
 
 	Set<Role> getAuthorities() {

@@ -2,19 +2,18 @@
 <html>
     <head>
         <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'placeBooking.label', default: 'PlaceBooking')}" />
-        <title><g:message code="default.create.label" args="[entityName]" /></title>
+        <title><g:message code="placeBooking.new.label"  /></title>
     </head>
     <body>
         <a href="#create-placeBooking" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
         <div class="nav" role="navigation">
             <ul>
                 <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-                <li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
+                <li><g:link class="list" action="index"><g:message code="placeBooking.label" /></g:link></li>
             </ul>
         </div>
         <div id="create-placeBooking" class="content scaffold-create" role="main">
-            <h1><g:message code="default.create.label" args="[entityName]" /></h1>
+            <h1><g:message code="placeBooking.new.label"  /></h1>
             <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
             </g:if>
@@ -30,21 +29,21 @@
                 <fieldset class="form">
                     %{--<f:all bean="placeBooking"/>--}%
                 <div class="fieldcontain">
-                    <label >Date</label>
+                    <label ><g:message code='placeBooking.date.label'/></label>
                     <g:datePicker name="date" value="${date}" precision="day" years="${2016..2020}"></g:datePicker>
                 </div>
                 <div class="fieldcontain">
-                    <label >Hour start</label>
+                    <label ><g:message code='placeBooking.hourStart.label'/></label>
                     <g:select name="hourStart" value="${hourStart}" from="${10..18}"/>
                 </div>
                 <div class="fieldcontain">
-                    <label >Hours</label>
+                    <label ><g:message code='placeBooking.hours.label'/></label>
                     <g:select name="hours" value="${hours}" from="${1..4}"/>
                 </div>
                 <div class="fieldcontain">
-                    <label >Table number</label>
+                    <label ><g:message code='placeBooking.place.label'/></label>
                     <g:select name="selectedTable" optionKey="${{it.tableNumber}}"
-                              optionValue="${{it.tableNumber + " (price: " + it.pricePerHour + ")"}}" from="${places}" />
+                              optionValue="${{it.tableNumber + " (${message(code:'placeBooking.price.label')}: " + it.pricePerHour + ")"}}" from="${places}" />
 
                 </div>
                 </fieldset>

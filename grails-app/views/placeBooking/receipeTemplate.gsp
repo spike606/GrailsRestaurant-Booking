@@ -144,7 +144,7 @@
   </head>
   <body>
     <header class="clearfix">
-      <h1>Booking confirmation</h1>
+      <h1>${message(code:'placeBooking.template.confirmation')}</h1>
       <div id="company" class="clearfix">
         <div>Restaurant Grails</div>
         <div>3 Foggy Heights,<br /> AZ 850, US</div>
@@ -152,23 +152,23 @@
         <div><a href="mailto:company@example.com">restaurantGrails@example.com</a></div>
       </div>
       <div id="project">
-        <div><span>USERNAME</span> ${placeBooking.user.username}</div>
-        <div><span>FIRST NAME</span> ${placeBooking.user.firstName}</div>
-        <div><span>LAST NAME</span> ${placeBooking.user.lastName}</div>
-        <div><span>EMAIL</span> ${placeBooking.user.email}</div>
-        <div><span>TELEPHONE</span> ${placeBooking.user.telephone}</div>
+        <div><span>${message(code:'placeBooking.template.username')}</span> ${placeBooking.user.username}</div>
+        <div><span>${message(code:'placeBooking.template.firstname')}</span> ${placeBooking.user.firstName}</div>
+        <div><span>${message(code:'placeBooking.template.lastname')}</span> ${placeBooking.user.lastName}</div>
+        <div><span>${message(code:'placeBooking.template.email')}</span> ${placeBooking.user.email}</div>
+        <div><span>${message(code:'placeBooking.template.telephone')}</span> ${placeBooking.user.telephone}</div>
       </div>
     </header>
     <main>
       <table>
         <thead>
           <tr>
-            <th class="service">TABLE NUMBER</th>
-            <th class="desc">PRICE PER HOUR</th>
-            <th>DATE</th>
-            <th>HOUR START</th>
-            <th>HOURS</th>
-            <th>TOTAL COST</th>
+            <th class="service">${message(code:'placeBooking.template.tablenumber')}</th>
+            <th class="desc">${message(code:'placeBooking.template.priceperhour')}</th>
+            <th>${message(code:'placeBooking.template.date')}</th>
+            <th>${message(code:'placeBooking.template.hourstart')}</th>
+            <th>${message(code:'placeBooking.template.hours')}</th>
+            <th>${message(code:'placeBooking.template.totalcost')}</th>
           </tr>
         </thead>
         <tbody>

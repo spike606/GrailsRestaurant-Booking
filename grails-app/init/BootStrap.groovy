@@ -38,7 +38,7 @@ class BootStrap {
 
         def user = new User(username: 'user', password: 'user', email: 'krystusw@gmail.com',
                 enabled: true, accountExpired: false, accountLocked: false, passwordExpired: false,
-                    firstName: 'user', lastName: 'user', telephone: '000000000').save()
+                    firstName: 'user', lastName: 'user', telephone: '123456').save()
 
 
         def admin = new User(username: 'admin', password: 'admin', email: 'krystusw@gmail.com',
