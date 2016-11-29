@@ -181,16 +181,15 @@ ul.jd_menu li li {
 }
 
 .s2ui_hidden_button {
-	background: black;
+	background: white;
 	border:     0;
 	float:      right;
 	height:     0;
-	left:       0px;
-	right:		20px;
+	left:       1px;
 	margin:     0;
 	padding:    0;
 	position:   absolute;
-	width:      30px;
+	width:      0;
 	z-index:    -1000;
 }
 
