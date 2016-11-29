@@ -3,13 +3,15 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
         <g:layoutTitle default="Grails"/>
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
     <asset:stylesheet src="application.css"/>
-
+    <asset:stylesheet src="spring-security-ui-register.css"/>
     <g:layoutHead/>
 
 </head>
@@ -97,7 +99,7 @@
     </div>
 
     <asset:javascript src="application.js"/>
-
+    <asset:javascript src='spring-security-ui-register.js'/>
 
 
 </body>

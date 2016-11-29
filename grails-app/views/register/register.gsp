@@ -1,6 +1,6 @@
 <html>
 <head>
-	<meta name="layout" content="${layoutRegister}"/>
+	<meta name="layout" content="${'main'}"/>
 	<s2ui:title messageCode='spring.security.ui.register.title'/>
 </head>
 <body>
@@ -10,7 +10,7 @@
 		grecaptcha.render('html_element', <recaptcha:renderParameters theme="dark" type="image" tabindex="2"/>);
 	};
 </script>
-<s2ui:formContainer type='register' focus='username' width='800px'>
+<s2ui:formContainer type='register' focus='username' height="600" width="800px">
 	<s2ui:form beanName='registerCommand' method="post" >
 		<g:if test='${emailSent}'>
 		<br/>
@@ -34,7 +34,7 @@
 			</tbody>
 
 		</table>
-		<s2ui:submitButton elementId='submit' messageCode='spring.security.ui.register.submit'/>
+		<s2ui:submitButton elementId='save' messageCode='spring.security.ui.register.submit'/>
 		</g:else>
 	</s2ui:form>
 </s2ui:formContainer>
