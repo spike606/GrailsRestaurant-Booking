@@ -28,7 +28,11 @@ class PlaceBookingController {
     }
 
     def show(PlaceBooking placeBooking) {
-        respond placeBooking
+        def currentUser = User.findWhere("username": springSecurityService.authentication.principal.username)
+        if(placeBooking.user.toString() == currentUser.toString()){
+            respond placeBooking
+        }else redirect(uri:'/')
+
     }
 
     def create() {
